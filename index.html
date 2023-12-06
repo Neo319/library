@@ -19,14 +19,27 @@
         <div id="cards"> Placeholder text </div>
 
         <div id="sidebar">Sidebar Placeholder
-            <dialog id="myDialog">hello
-                <button id="closeDialog">x</button>
-            </dialog>
-            
-
-
             
         </div>
+
+        <dialog id="myDialog">
+            <span>Add New Book</span>
+            <button id="closeDialog">x</button>
+            
+            <form action="./index.html" id="modalForm">
+                <label for="title">Title: </label>
+                <input type="text" id="title" placeholder="e.g. The Da Vinci Code">
+
+                <label for="author">Author: </label>
+                <input type="text" id="author" placeholder="Dan Brown">
+
+                <label for="pages">Pages: </label>
+                <input type="number" id="pages" placeholder="689">
+
+                <label for="read">Read?</label>
+                <input type="checkbox" id="read">
+            </form>
+        </dialog>
 </div>
 
 

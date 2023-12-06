@@ -4,7 +4,7 @@ body {
     margin: 0;
 }
 
-* {border: 1px solid red;}
+/* * {border: 1px solid red;} */
 
 a {
     color:white;
@@ -55,4 +55,16 @@ a {
 
 .card {
     background-color: aliceblue;
+}
+
+
+#modalForm {
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 10px;
+
+}
+
+#modalForm label, input {
+    font-size: 1.3rem;
 }
