@@ -1,6 +1,10 @@
 console.log("I'm here!");
 
 
+const cardsDisplay = document.getElementById("cards");
+
+
+const myLibrary = [];
 
 
 class Book {
@@ -20,6 +24,21 @@ class Book {
 
             return `${title} by ${author}, ${pages} pages, ${readText}.`;
         };
+
+        this.addToLibrary = function () {
+            let myCard = document.createElement("div");
+            myCard.classList = "card";
+            let cardInfo = document.createElement("p");
+            cardsDisplay.appendChild(myCard);
+            myCard.appendChild(cardInfo);
+
+            let readText = "not read yet";
+            if (read === "read") { readText = "read"; };
+
+            cardInfo.textContent = `${title} by ${author}, ${pages} pages, ${readText}.`
+            myCard.appendChild (cardInfo);
+
+        }
     }
 }
 
@@ -30,6 +49,26 @@ console.log(book1.info());
 console.log(book2.info());
 
 
-console.log(Object.getPrototypeOf(book1));
+
+function addBookToLibrary() {
+
+}
+
+
+
+
+book1.addToLibrary();
+book2.addToLibrary();
+
+
+
+let myButton = document.querySelector("button");
+let myDialog = document.querySelector("dialog");
+myButton.addEventListener("click", () => {myDialog.show()});
+
+let closeDialog = document.getElementById("closeDialog");
+closeDialog.addEventListener("click", () => {myDialog.close()});
+
+
 
 
