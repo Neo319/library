@@ -38,6 +38,14 @@ class Book {
             cardInfo.textContent = `${title} by ${author}, ${pages} pages, ${readText}.`
             myCard.appendChild (cardInfo);
 
+
+            let closeCard = document.createElement("button");
+            closeCard.textContent = "x";
+            closeCard.addEventListener("click", () => {myCard.remove});
+            closeCard.classList = "closeCard";
+
+            myCard.appendChild(closeCard);
+
         }
     }
 }
