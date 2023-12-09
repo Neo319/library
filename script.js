@@ -76,7 +76,14 @@ let myDialog = document.querySelector("dialog");
 newBookBtn.addEventListener("click", () => {myDialog.show()});
 
 let closeDialog = document.getElementById("closeDialog");
-closeDialog.addEventListener("click", () => {myDialog.close()});
+closeDialog.addEventListener("click", () => {
+    myDialog.close()
+
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    bookPages.value = '';
+    bookRead.checked = false;
+});
 
 let submitForm = document.getElementById("submitForm");
 let myForm = document.getElementById("modalForm");
