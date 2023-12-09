@@ -8,11 +8,6 @@ const myLibrary = [];
 
 
 
-// need to change object to contain only book info and be stored in array.
-
-// write new function to create cards based on the above array. 
-
-
 class Book {
     constructor(title, author, pages, read) {
         this.title = title;
@@ -39,9 +34,6 @@ addBooktoLibrary(book2);
 function libraryDisplay() {
             // first, remove whatever is being displayed 
             cardsDisplay.innerHTML = ''; 
-
-
-
             //loop through myLibrary array, create new card for each Book
             myLibrary.forEach((Book) => {
                 console.log(Book);
@@ -62,16 +54,18 @@ function libraryDisplay() {
                 closeCard.textContent = "x";
 
                 // to remove book properly, need to access book object index somehow...
-                closeCard.addEventListener("click", () => {myCard.remove()});
+                closeCard.addEventListener("click", () => {removeBook(Book)});
                 closeCard.classList = "closeCard";
                 myCard.appendChild(closeCard);
             })};
 
 libraryDisplay();
 
-// function removeBook() {
-
-// }
+function removeBook(book) {
+    console.log(myLibrary.indexOf(book));
+    myLibrary.splice(myLibrary.indexOf(book), 1);
+    libraryDisplay();
+}
 
 
 
@@ -86,33 +80,42 @@ closeDialog.addEventListener("click", () => {myDialog.close()});
 let submitForm = document.getElementById("submitForm");
 let myForm = document.getElementById("modalForm");
 
-// make submit button create new book object, push to array, and loop through array again
-// problem: how to access the form data that is given? 
 
+// make submit button create new book object, push to array, and loop through array again
 submitForm.addEventListener("click", (function(event) {
     //prevent default function of submit button.
     event.preventDefault();
+
     console.log((document.getElementById("title")).value)
     
-    
-        bookTitle   = (document.getElementById("title").value)
-        bookAuthor  = (document.getElementById("author").value)
-        bookPages   = (document.getElementById("pages").value)
-        bookRead    = (document.getElementById("read").value)
+        bookTitle   = (document.getElementById("title"))
+        bookAuthor  = (document.getElementById("author"))
+        bookPages   = (document.getElementById("pages"))
+        bookRead    = (document.getElementById("read"))
 
-        let newBook = new Book (bookTitle, bookAuthor, bookPages, bookRead);
+        // do a form validation here (html validation did not seem to function)
+    if (bookTitle.value === ''
+    || bookAuthor.value === ''
+    || bookPages.value === '') {
+        alert ("Form is missing information!")
+        return undefined; // cancel the rest of this function
+    };
 
-    
-    console.log(newBook);
-
+    let newBook = new Book (bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
     myLibrary.push(newBook);
-    console.log(myLibrary);
+    // console.log(myLibrary);
 
     libraryDisplay();
     myDialog.close();
-
- 
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    bookPages.value = '';
+    bookRead.checked = false;
 }));
 
 
 
+// notes for next time:
+// 1. fix up the read checkbox
+// 2. fix form submit validation so that it will not accept the form unless it meets requirements... (idea: if statement + alert() + break)
+// 3. update styles, make it responsive, and we're done!!
