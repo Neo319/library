@@ -18,9 +18,10 @@ class Book {
     }
 }
 
-const book1 = new Book ('The Hobbit', 'J.R.R Tolkien', 295, true)
-const book2 = new Book ("Art of War", "Sun Tzu", 260, true)
-
+const book1 = new Book ('The Hobbit', 'J.R.R Tolkien', 295, false);
+const book2 = new Book ("Art of War", "Sun Tzu", 260, true);
+const book3 = new Book ("Indian Horse", "Richard Wagamese", 220, true);
+const book4 = new Book ("Vital Nourishment: Departing from Happiness", "Francois Jullien", 178, true)
 
 function addBooktoLibrary(newBook) {
     myLibrary.push(newBook)
@@ -28,6 +29,8 @@ function addBooktoLibrary(newBook) {
 
 addBooktoLibrary(book1);
 addBooktoLibrary(book2);
+addBooktoLibrary(book3);
+addBooktoLibrary(book4);
 
 
 function libraryDisplay() {

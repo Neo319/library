@@ -19,13 +19,17 @@ a {
     text-align: center;
 }
 
-.header button {
+.header button, #submitForm {
     background-color: #facc15;
     padding: 1rem;
     font-weight: 700;
     border: none;
 
     border-radius: 10px;
+}
+
+.header button:hover, #submitForm:hover {
+    background-color: yellow;
 }
 
 
@@ -38,8 +42,8 @@ a {
 
 #cards {
     display: grid;
-    grid-template-columns: 50vw;
-    grid-auto-rows: 5rem;
+    
+    grid-auto-rows: 6rem;
     gap: 10px;
 
     margin-bottom: 100px;
@@ -47,14 +51,25 @@ a {
 
 .card {
     background-color: aliceblue;
-
     position: relative;
+
+    text-align: center;
+
+    margin: 10px;
+    padding: 1rem;
+    padding-bottom: 4rem;
+    padding-top: 0;
+    margin-right: 10vw;
+    margin-left: 10vw;
 }
 
 .closeCard {
     position: absolute;
     top: 0;
     right: 0;
+    background-color: maroon;
+    color: white;
+    border: none;
 }
 
 
@@ -77,12 +92,41 @@ a {
 
 }
 
+#submitForm {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+
 #closeDialog {
     position: absolute;
     right: 0;
     top: 0;
+    background-color: maroon;
+    color: white;
+    border:none;
+}
+
+.closeCard:hover, #closeDialog:hover {
+    background-color: red;
 }
 
 #myDialog input {
     width: 60vw;
+}
+
+@media only screen and (min-width: 700px) {
+    #cards {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 7rem;
+        gap: 15px;
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+
+    .card {
+    margin: 0;
+
+    }
 }
