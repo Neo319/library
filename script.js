@@ -15,7 +15,6 @@ class Book {
         this.pages = pages;
         this.read = read;
 
-        // this.index = 
     }
 }
 
@@ -53,7 +52,6 @@ function libraryDisplay() {
                 let closeCard = document.createElement("button");
                 closeCard.textContent = "x";
 
-                // to remove book properly, need to access book object index somehow...
                 closeCard.addEventListener("click", () => {removeBook(Book)});
                 closeCard.classList = "closeCard";
                 myCard.appendChild(closeCard);
@@ -103,7 +101,6 @@ submitForm.addEventListener("click", (function(event) {
 
     let newBook = new Book (bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
     myLibrary.push(newBook);
-    // console.log(myLibrary);
 
     libraryDisplay();
     myDialog.close();
@@ -114,8 +111,3 @@ submitForm.addEventListener("click", (function(event) {
 }));
 
 
-
-// notes for next time:
-// 1. fix up the read checkbox
-// 2. fix form submit validation so that it will not accept the form unless it meets requirements... (idea: if statement + alert() + break)
-// 3. update styles, make it responsive, and we're done!!
