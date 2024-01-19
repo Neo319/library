@@ -14,9 +14,16 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
-
+    }
+    // Book class now has getter function for read status
+    getReadStatus() {
+        return this.read ? 'read' : 'not read yet'
     }
 }
+
+
+
+
 
 const book1 = new Book ('The Hobbit', 'J.R.R Tolkien', 295, false);
 const book2 = new Book ("Art of War", "Sun Tzu", 260, true);
@@ -38,7 +45,6 @@ function libraryDisplay() {
             cardsDisplay.innerHTML = ''; 
             //loop through myLibrary array, create new card for each Book
             myLibrary.forEach((Book) => {
-                console.log(Book);
 
                 let myCard = document.createElement("div");
                 myCard.classList = "card";
