@@ -4,7 +4,7 @@ console.log("I'm here!");
 const cardsDisplay = document.getElementById("cards");
 
 
-const myLibrary = [];
+// const MyLibrary = [];
 
 
 
@@ -15,7 +15,6 @@ class Book {
         this.pages = pages;
         this.read = read;
     }
-    // Book class now has getter function for read status
     getReadStatus() {
         return this.read ? 'read' : 'not read yet'
     }
@@ -24,57 +23,98 @@ class Book {
 
 
 
+// library functionality is now within a Library class
+class Library {
+    constructor () {
+        this.MyLibrary = [];
+    }
+
+    addBook (newBook) {
+        this.MyLibrary.push(newBook)
+    }
+
+    removeBook (book) {
+            console.log(this.MyLibrary.indexOf(book));
+            MyLibrary.splice(this.MyLibrary.indexOf(book), 1);
+        
+    }
+
+    displayLibrary () {
+        // first, remove whatever is being displayed 
+        cardsDisplay.innerHTML = ''; 
+        //loop through MyLibrary array, create new card for each Book
+        this.MyLibrary.forEach((Book) => {
+
+            let myCard = document.createElement("div");
+            myCard.classList = "card";
+            let cardInfo = document.createElement("p");
+            cardsDisplay.appendChild(myCard);
+            myCard.appendChild(cardInfo);
+
+            let readText = "not read yet";
+            if (Book.read) {readText = "read"};
+
+            cardInfo.textContent = `${Book.title} by ${Book.author}, ${Book.pages} pages, ${readText}.`
+            myCard.appendChild (cardInfo);
+
+            let closeCard = document.createElement("button");
+            closeCard.textContent = "x";
+
+            closeCard.addEventListener("click", () => {removeBook(Book)});
+            closeCard.classList = "closeCard";
+            myCard.appendChild(closeCard);
+        })
+    }
+}
+
+
+// function libraryDisplay() {
+//             // first, remove whatever is being displayed 
+//             cardsDisplay.innerHTML = ''; 
+//             //loop through MyLibrary array, create new card for each Book
+//             MyLibrary.forEach((Book) => {
+
+//                 let myCard = document.createElement("div");
+//                 myCard.classList = "card";
+//                 let cardInfo = document.createElement("p");
+//                 cardsDisplay.appendChild(myCard);
+//                 myCard.appendChild(cardInfo);
+
+//                 let readText = "not read yet";
+//                 if (Book.read) {readText = "read"};
+
+//                 cardInfo.textContent = `${Book.title} by ${Book.author}, ${Book.pages} pages, ${readText}.`
+//                 myCard.appendChild (cardInfo);
+
+//                 let closeCard = document.createElement("button");
+//                 closeCard.textContent = "x";
+
+//                 closeCard.addEventListener("click", () => {removeBook(Book)});
+//                 closeCard.classList = "closeCard";
+//                 myCard.appendChild(closeCard);
+//             })};
+
+// libraryDisplay();
+
+// function removeBook(book) {
+//     console.log(MyLibrary.indexOf(book));
+//     MyLibrary.splice(MyLibrary.indexOf(book), 1);
+//     libraryDisplay();
+// }
+
+const library = new Library ();
 
 const book1 = new Book ('The Hobbit', 'J.R.R Tolkien', 295, false);
 const book2 = new Book ("Art of War", "Sun Tzu", 260, true);
 const book3 = new Book ("Indian Horse", "Richard Wagamese", 220, true);
 const book4 = new Book ("Vital Nourishment: Departing from Happiness", "Francois Jullien", 178, true)
 
-function addBooktoLibrary(newBook) {
-    myLibrary.push(newBook)
-};
+library.addBook(book1);
+library.addBook(book2);
+library.addBook(book3);
+library.addBook(book4);
 
-addBooktoLibrary(book1);
-addBooktoLibrary(book2);
-addBooktoLibrary(book3);
-addBooktoLibrary(book4);
-
-
-function libraryDisplay() {
-            // first, remove whatever is being displayed 
-            cardsDisplay.innerHTML = ''; 
-            //loop through myLibrary array, create new card for each Book
-            myLibrary.forEach((Book) => {
-
-                let myCard = document.createElement("div");
-                myCard.classList = "card";
-                let cardInfo = document.createElement("p");
-                cardsDisplay.appendChild(myCard);
-                myCard.appendChild(cardInfo);
-
-                let readText = "not read yet";
-                if (Book.read) {readText = "read"};
-
-                cardInfo.textContent = `${Book.title} by ${Book.author}, ${Book.pages} pages, ${readText}.`
-                myCard.appendChild (cardInfo);
-
-                let closeCard = document.createElement("button");
-                closeCard.textContent = "x";
-
-                closeCard.addEventListener("click", () => {removeBook(Book)});
-                closeCard.classList = "closeCard";
-                myCard.appendChild(closeCard);
-            })};
-
-libraryDisplay();
-
-function removeBook(book) {
-    console.log(myLibrary.indexOf(book));
-    myLibrary.splice(myLibrary.indexOf(book), 1);
-    libraryDisplay();
-}
-
-
+library.displayLibrary();
 
 
 let newBookBtn = document.querySelector("button");
@@ -116,7 +156,7 @@ submitForm.addEventListener("click", (function(event) {
     };
 
     let newBook = new Book (bookTitle.value, bookAuthor.value, bookPages.value, bookRead.checked);
-    myLibrary.push(newBook);
+    MyLibrary.push(newBook);
 
     libraryDisplay();
     myDialog.close();
